@@ -34,7 +34,7 @@ function HostelsSearch() {
       })
       .then(({ data }) => {
         setSearchResults(data.holidays);
-        setFetching({ ...fetching, status: false, errors: [] });
+        setFetching({ ...fetching, status: false, errors: [], searched: true });
       })
       .catch((err) => {
         console.log(err);
@@ -42,6 +42,7 @@ function HostelsSearch() {
           ...fetching,
           status: false,
           errors: err.response.data.errors || [],
+          searched: true,
         });
       });
   }, [searchFilter]);

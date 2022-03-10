@@ -36,8 +36,12 @@ export default function Results({
         </Alert>
       ) : (
         <>
-          {holidaysMemo.map((holiday) => (
-            <DisplayCard hotel={holiday.hotel} />
+          {holidaysMemo.map((holiday, index) => (
+            <DisplayCard
+              hotel={holiday.hotel}
+              pricePerPerson={holiday.pricePerPerson}
+              key={index}
+            />
           ))}
         </>
       )}

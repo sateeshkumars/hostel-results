@@ -73,7 +73,7 @@ export default function ApplyFilters({ searchFilter, setSearchFilter }) {
                 onChange={({ target: { value } }) =>
                   setSearchFilter({
                     ...searchFilter,
-                    pricePerPerson: Number(value) ? Number(value) : null,
+                    pricePerPerson: Number(value) ? Number(value) : "",
                   })
                 }
                 startAdornment={
@@ -90,9 +90,17 @@ export default function ApplyFilters({ searchFilter, setSearchFilter }) {
               onChange={(_, data) =>
                 setSearchFilter({
                   ...searchFilter,
-                  hotelFacility: data.value,
+                  hotelFacility: data.value || "",
                 })
               }
+              onInputChange={(_, data) => {
+                if (!data) {
+                  setSearchFilter({
+                    ...searchFilter,
+                    hotelFacility: "",
+                  });
+                }
+              }}
               renderInput={(params) => (
                 <TextField {...params} label="Hotel Facilities" focused />
               )}
@@ -102,10 +110,18 @@ export default function ApplyFilters({ searchFilter, setSearchFilter }) {
               disablePortal
               options={starRatings}
               value={searchFilter.starRating}
+              onInputChange={(_, data) => {
+                if (!data) {
+                  setSearchFilter({
+                    ...searchFilter,
+                    starRating: "",
+                  });
+                }
+              }}
               onChange={(_, data) =>
                 setSearchFilter({
                   ...searchFilter,
-                  starRating: data.value,
+                  starRating: data.value || "",
                 })
               }
               renderInput={(params) => (

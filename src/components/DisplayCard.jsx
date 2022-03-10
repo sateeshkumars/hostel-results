@@ -10,7 +10,7 @@ import Rating from "@mui/material/Rating";
 import Chip from "@mui/material/Chip";
 import { Grid } from "@mui/material";
 
-export default function DisplayCard({ hotel = {} }) {
+export default function DisplayCard({ hotel = {}, pricePerPerson = "" }) {
   return (
     <Card sx={{ maxWidth: 345, margin: "8px" }}>
       <CardHeader
@@ -22,7 +22,9 @@ export default function DisplayCard({ hotel = {} }) {
           </Avatar>
         }
         title={hotel.name}
-        subheader="September 14, 2016"
+        subheader={`Price per person: ${
+          !!pricePerPerson ? "$" + pricePerPerson : "NA"
+        }`}
       />
       {hotel.content.images.length > 0 && (
         <CardMedia
