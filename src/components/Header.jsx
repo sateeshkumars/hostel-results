@@ -20,7 +20,7 @@ export function appBarLabel(variant, label) {
 export default function Header({ theme, setTheme = () => {} }) {
   return (
     <AppBar position="static" color="primary">
-      {appBarLabel("h6", "Hostels")}
+      {appBarLabel("h6", "Hotels")}
     </AppBar>
   );
 }
